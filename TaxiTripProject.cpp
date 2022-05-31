@@ -9,5 +9,7 @@ int main() {
 
     cout << "I'm Darijan\n";
 
+    cout << "I'm Veni";
+
     return 0;
 }
