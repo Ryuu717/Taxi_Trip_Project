@@ -5,4 +5,3 @@ test3,333-3333-3333,test3@gmail.com,street3,city3,state3,country3,333-3333  ,pas
 test4,444-4444-4444,test4@gmail.com,street4,city4,state4,country4,444-4444  ,password,Cash,
 test5,555-5555-5555,test5@gmail.com,street5,city5,state5,country5,555-5555  ,password,Online Payment,
 test6,666-6666-6666,test6@gmail.com,street6,city6,state6,country6,666-6666  ,password,Credit Card,
-Name ,Phone        ,Email          ,Street ,City ,State ,Country ,PostalCode,Password,Payment,

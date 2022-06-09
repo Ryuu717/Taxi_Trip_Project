@@ -519,6 +519,7 @@ void ride(vector <Customers> &customers){
 void signup(vector <Customers> &customers){
     struct Customers c;
     int option;
+    int i = customers.size();
 
     cout << "************************************************\n";
     cout << "Sign up\n";
@@ -574,15 +575,15 @@ void signup(vector <Customers> &customers){
     ofstream customerList("CustomerList.csv", ios::app);
 
 
-
     // customerList << "Name,Phone,Email,Street,City,State,Country,Postal Code,Password,Payment\n" ;
-    customerList << customers[0].name << "," << customers[0].phone << "," << customers[0].email << "," << customers[0].street << "," << customers[0].city << "," << customers[0].state << "," << customers[0].country << "," << customers[0].postalCode << "," << customers[0].password << "," << customers[0].payment << ",\n" ;
+    customerList << customers[i].name << "," << customers[i].phone << "," << customers[i].email << "," << customers[i].street << "," << customers[i].city << "," << customers[i].state << "," << customers[i].country << "," << customers[i].postalCode << "," << customers[i].password << "," << customers[i].payment << ",\n" ;
 }
 
 
 void adminSignup(vector <Admins> &admins){
     struct Admins a;
     int option;
+    int i = admins.size();      //List Size
 
     cout << "************************************************\n";
     cout << "Admin Sign Up\n";
@@ -614,7 +615,7 @@ void adminSignup(vector <Admins> &admins){
 
     ofstream adminList("AdminList.csv", ios::app);
 
-    adminList << admins[0].name << "," << admins[0].phone << "," << admins[0].email << "," << admins[0].street << "," << admins[0].city << "," << admins[0].state << "," << admins[0].country << "," << admins[0].postalCode << "," << admins[0].password << ",\n" ;
+    adminList << admins[i].name << "," << admins[i].phone << "," << admins[i].email << "," << admins[i].street << "," << admins[i].city << "," << admins[i].state << "," << admins[i].country << "," << admins[i].postalCode << "," << admins[i].password << ",\n" ;
 }
 
 void adminLogin(vector <Customers> &customers, vector <Drivers> &drivers, vector <Admins> &admins, vector <Orders> &orders, vector <Inquiries> &inquiries){
