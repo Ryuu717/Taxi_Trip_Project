@@ -1,7 +1,4 @@
-Name   ,Phone        ,Email            ,Street ,City ,State ,Country ,PostalCode,Password,License No.,Area
-driver1,111-1111-1111,driver1@gmail.com,street1,city1,state1,country1,111-1111  ,password,111111     ,Area1
-driver2,222-2222-2222,driver2@gmail.com,street2,city2,state2,country2,222-2222  ,password,222222     ,Area2
-driver3,333-3333-3333,driver3@gmail.com,street3,city3,state3,country3,333-3333  ,password,333333     ,Area3
-driver4,444-4444-4444,driver4@gmail.com,street4,city4,state4,country4,444-4444  ,password,444444     ,Area4
-driver5,555-5555-5555,driver5@gmail.com,street5,city5,state5,country5,555-5555  ,password,555555     ,Area5
-driver6,666-6666-6666,driver6@gmail.com,street6,city6,state6,country6,666-6666  ,password,666666     ,Area6
+Name,Phone,Email,Street,City,State,Country,PostalCode,Password,License No.,Area
+driver1,111-1111-1111,driver1@gmail.com,street1,city1,state1,country1,111-1111,aaAA11##,111111,Area1
+driver2,222-2222-2222,driver2@gmail.com,street2,city2,state2,country2,222-2222,aaAA11##,222222,Area2
+

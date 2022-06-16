@@ -1,5 +1,3 @@
 Name  ,Phone        ,Email           ,Street ,City ,State ,Country ,PostalCode,Password,
-admin1,111-1111-1111,admin1@gmail.com,street1,city1,state1,country1,111-1111  ,password,
-admin2,222-2222-2222,admin2@gmail.com,street2,city2,state2,country2,222-2222  ,password,
-admin3,333-3333-3333,admin3@gmail.com,street3,city3,state3,country3,333-3333  ,password,
-admin4,444-4444-4444,admin4@gmail.com,street4,city4,state4,country4,444-4444,password,
+admin1,111-1111-1111,admin1@gmail.com,street1,city1,state1,country1,111-1111,aaAA11##,
+admin2,222-2222-2222,admin2@gmail.com,street2,city2,state2,country2,222-2222,bbBB22##,
