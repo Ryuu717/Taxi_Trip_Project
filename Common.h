@@ -12,6 +12,7 @@ using namespace std;
 //Declare structures
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct Customers{
+    int customerId;
     string name;
     string phone;
     string email;
@@ -28,7 +29,8 @@ struct Customers{
     int selectedService;
 
     //constructor
-    Customers(string n="name", string pn="000-0000-0000", string e="email@email.com", string p="password", string str="street", string cit="city", string sta="state", string cou="country", string pc="000-0000", string pm="credit", string ccn="NA", string pl="area1",string des="area2",int ss=1){
+    Customers(int cid=0, string n="name", string pn="000-0000-0000", string e="email@email.com", string p="password", string str="street", string cit="city", string sta="state", string cou="country", string pc="000-0000", string pm="credit", string ccn="NA", string pl="area1",string des="area2",int ss=1){
+        customerId = cid;
         name = n;
         phone = pn;
         email = e;
@@ -47,6 +49,7 @@ struct Customers{
 };
 
 struct Drivers{
+    int driverId;
     string name;
     string phone;
     string email;
@@ -60,7 +63,8 @@ struct Drivers{
     string area;
 
     //constructor
-    Drivers(string n="name", string pn="000-0000-0000", string e="email@email.com", string p="password", string str="street", string cit="city", string sta="state", string cou="country", string pc="000-0000", string li="0000-0000", string a="area"){
+    Drivers(int did=0,string n="name", string pn="000-0000-0000", string e="email@email.com", string p="password", string str="street", string cit="city", string sta="state", string cou="country", string pc="000-0000", string li="0000-0000", string a="area"){
+        driverId = did;
         name = n;
         phone = pn;
         email = e;
@@ -76,6 +80,7 @@ struct Drivers{
 };
 
 struct Admins{
+    int adminId;
     string name;
     string phone;
     string email;
@@ -85,10 +90,10 @@ struct Admins{
     string country;
     string postalCode;
     string password;
-    string payment;
 
     //constructor
-    Admins(string n="name", string pn="000-0000-0000", string e="email@email.com", string p="password", string str="street", string cit="city", string sta="state", string cou="country", string pc="000-0000", string pm="credit"){
+    Admins(int aid=0, string n="name", string pn="000-0000-0000", string e="email@email.com", string p="password", string str="street", string cit="city", string sta="state", string cou="country", string pc="000-0000"){
+        adminId = aid;
         name = n;
         phone = pn;
         email = e;
@@ -98,33 +103,42 @@ struct Admins{
         country = cou;
         postalCode = pc;
         password = p;
-        payment = pm;
     }
 };
 
 struct Orders{
+    int orderId;
     int year;
     int month;
     int day;
+    int hour;
+    int min;
     int days;
     int week;
     string customerName;
     string driverName;
     string carType;
+    int pickupArea;
+    int destinationArea;
     string pickupLocation;
     string destination;
     float fare;
     int selectedService;
 
-    Orders(int y=2022, int m=01, int d=01, int ds=01, int w=01, string cn="customer name", string dn="driver name", string ct="taxi", string pl="pickup location", string des="destination", float fa=10.00, int ss=1){
+    Orders(int oid=0, int y=2022, int mon=01, int d=01, int h=01, int min=01, int ds=01, int w=01, string cn="customer name", string dn="driver name", string ct="taxi",int pa = 1, int da = 1, string pl="pickup location", string des="destination", float fa=10.00, int ss=1){
+        orderId = oid;
         year = y;
-        month = m;
+        month = mon;
         day = d;
+        hour = h;
+        min = min;
         days = ds;
         week = w;
         customerName = cn; 
         driverName = dn; 
         carType = ct;
+        pickupArea = pa;
+        destinationArea = da;
         pickupLocation = pl; 
         destination = des;
         fare = fa;
@@ -170,11 +184,17 @@ void readOrderList(vector <Orders> &orders){
         
         //String to integer conversion
         getline(i_stream, item, ',');
-        o.year = atoi(item.c_str());
+        o.orderId = atoi(item.c_str());         //conver string to integer
+        getline(i_stream, item, ',');
+        o.year = atoi(item.c_str());        
         getline(i_stream, item, ',');
         o.month = atoi(item.c_str());
         getline(i_stream, item, ',');
         o.day = atoi(item.c_str());
+        getline(i_stream, item, ',');
+        o.hour = atoi(item.c_str());
+        getline(i_stream, item, ',');
+        o.min = atoi(item.c_str());
         getline(i_stream, item, ',');
         o.days = atoi(item.c_str());
         getline(i_stream, item, ',');
@@ -183,6 +203,10 @@ void readOrderList(vector <Orders> &orders){
         getline(i_stream, o.customerName, ',');
         getline(i_stream, o.driverName, ',');
         getline(i_stream, o.carType, ',');
+        getline(i_stream, item, ',');
+        o.pickupArea = atoi(item.c_str());
+        getline(i_stream, item, ',');
+        o.destinationArea = atoi(item.c_str());
         getline(i_stream, o.pickupLocation, ',');
         getline(i_stream, o.destination, ',');
         getline(i_stream, item, ',');
@@ -226,6 +250,8 @@ void readCustomerList(vector <Customers> &customers){
     while (getline(customerList, line)) {    
         istringstream i_stream(line);
 
+        getline(i_stream, item, ',');
+        c.customerId = atoi(item.c_str());
         getline(i_stream, c.name, ',');
         getline(i_stream, c.phone, ',');
         getline(i_stream, c.email, ',');
@@ -249,6 +275,8 @@ void readDriverList(vector <Drivers> &drivers){
     while (getline(driverList, line)) {    
         istringstream i_stream(line);
 
+        getline(i_stream, item, ',');
+        d.driverId = atoi(item.c_str());
         getline(i_stream, d.name, ',');
         getline(i_stream, d.phone, ',');
         getline(i_stream, d.email, ',');
@@ -273,6 +301,8 @@ void readAdminList(vector <Admins> &admins){
     while (getline(adminList, line)) {    
         istringstream i_stream(line);
 
+        getline(i_stream, item, ',');
+        a.adminId = atoi(item.c_str());
         getline(i_stream, a.name, ',');
         getline(i_stream, a.phone, ',');
         getline(i_stream, a.email, ',');
@@ -296,6 +326,12 @@ bool isPhoneValid(string& phone){
    regex pattern("(\\d+)(\\-)(\\d+)(\\-)(\\d+)");               // define a regular expression
    
    return regex_match(phone, pattern);                          // try to match the string with the regular expression
+}
+
+bool isPostalCodeValid(string& postalCode){
+   regex pattern("(\\d+)(\\-)(\\d+)");             
+   
+   return regex_match(postalCode, pattern);                   
 }
 
 bool isEmailValid(string& email){
@@ -356,4 +392,28 @@ bool isIntegerValid(string& number){
    regex pattern("[0-9]");                  //Determine if the number is integer
 
    return regex_match(number, pattern);                    
+}
+
+bool isMultiDigitValid(string& number){
+   regex pattern("[0-9]+");                  //Determine if the number is integer
+
+   return regex_match(number, pattern);                    
+}
+
+bool isYesNoValid(string& answer){
+   regex pattern("[yn]");                  //Determine if the number is integer
+
+   return regex_match(answer, pattern);                    
+}
+
+bool isNameValid(string& name){
+   regex pattern("(\\w+)(\\s+)?(\\w+)?(\\s+)?(\\w+)?");       
+   
+   return regex_match(name, pattern);                           
+}
+
+bool isLicenseValid(string& number){
+   regex pattern("(\\w+)");       
+   
+   return regex_match(number, pattern);                           
 }

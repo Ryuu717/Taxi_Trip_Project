@@ -1,3 +1,12 @@
-Year,Month,Day,Days,Weeks,Customer,Driver,Car Type,Pickup Location,Destination,Fare
-2022,6,15,10,10,guest1,Not assigned,Taxi(4 people),tokyo,odaiba,111,
-2022,6,15,166,10,customer4,Not assigned,Taxi(4 people),tokyo,chiyoda,111,
+Order ID,Year,Month,Day,Hour,Minute,Days,Weeks,Customer,Driver,Car Type,Pickup Area,Destination Area,Pickup Location,Destination,Fare
+1,2022,1,1,7,0,1,1,customer1,Not assigned,Taxi(4 people),1,1,tokyo,shinjuku,10,
+2,2022,2,2,7,5,33,5,customer2,Not assigned,Van(5 people),1,2,tokyo,hachioji,23,
+3,2022,3,3,8,30,62,9,customer3,Not assigned,Premium Van(6 people),1,2,tokyo,odaiba,26,
+4,2022,4,4,12,0,94,14,customer1,Not assigned,Van(5 people),2,2,urayasu,hachioji,11.5,
+5,2022,5,5,1,50,125,18,customer2,Not assigned,Taxi(4 people),2,1,hachioji,tokyo,20,
+6,2022,6,19,7,30,170,25,customer3,Not assigned,Premium Van(6 people),1,2,meguro,akihabara,23,
+7,2022,6,19,7,30,170,25,customer4,Not assigned,Van(5 people),1,2,meguro,akihabara,23,
+8,2022,6,19,7,30,170,25,customer1,Not assigned,Van(5 people),1,2,meguro,akihabara,23,
+9,2022,6,19,7,30,170,25,customer2,Not assigned,Van(5 people),1,2,meguro,akihabara,23,
+10,2022,6,19,7,30,170,25,customer3,Not assigned,Van(5 people),1,2,meguro,akihabara,23,
+11,2022,6,19,7,30,170,25,customer3,Not assigned,Van(5 people),1,2,meguro,akihabara,23,

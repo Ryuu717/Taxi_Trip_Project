@@ -19,9 +19,15 @@ void mainMenu(vector <Customers> &customers, vector <Drivers> &drivers, vector <
 
 //validation
 bool isPhoneValid(string& phone);
+bool isPostalCodeValid(string& postalCode);
 bool isEmailValid(string& email);
 bool isPasswordValid(string& password);
 bool isIntegerValid(string& number);
+bool isYesNoValid(string& answer);
+bool isMultiDigitValid(string& number);
+bool isNameValid(string& name);
+bool isLicenseValid(string& number);
+// bool isOptionValid(int firstOption, int lastOption, int userInput);
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +39,6 @@ int main(){
     vector <Admins> admins;
     vector <Orders> orders;
     vector <Inquiries> inquiries;
-    
 
     readCustomerList(customers);
     readDriverList(drivers);
@@ -60,7 +65,9 @@ int main(){
 //Functions
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void mainMenu(vector <Customers> &customers, vector <Drivers> &drivers, vector <Admins> &admins, vector <Orders> &orders, vector <Inquiries> &inquiries, int* sId){
-    int option;
+    string strOption;
+    // int intOption1,intOption2;
+    int menuOption, accountOption;
 
     cout << "===============================================================================================\n";
     cout << "_____.___.            ___.                   ________________  ____  ___.___\n\\__  |   | ____   ____\\_ |__   ____   ____   \\__    ___/  _  \\ \\   \\/  /|   |\n /   |   |/  _ \\ /  _ \\| __ \\_/ __ \\_/ __ \\    |    | /  /_\\  \\ \\     / |   |\n \\____   (  <_> |  <_> ) \\_\\ \\  ___/\\  ___/    |    |/    |    \\/     \\ |   |\n / ______|\\____/ \\____/|___  /\\___  >\\___  >   |____|\\____|__  /___/\\  \\|___|\n\n";
@@ -74,12 +81,33 @@ void mainMenu(vector <Customers> &customers, vector <Drivers> &drivers, vector <
     cout << "  2.Driver\n";
     cout << "  3.Admin\n";
     cout << "  4.Exit\n";
-    cout << "------------------------\n";
-    cout << "  Enter option: ";
-    cin >> option;
-    cout << "\n\n";
 
-    switch (option) {
+    //integer & option validation
+    while(true){
+        cout << " ------------------------------------------------\n";
+        cout << "  Enter option: ";
+        getline(cin, strOption);                                                //integer validation
+        if(isIntegerValid(strOption) == false){
+            cout << " ------------------------------------------------\n";
+            cout << "\n ❗️Select a number from the menu. (Press any key) \n\n";
+            cin.clear();
+            cin.ignore(10000, '\n');
+        } else if (strOption == "1" || strOption == "2" || strOption == "3" || strOption == "4"){   //option validation
+            cout << "\n\n";
+            // cin.clear();
+            // cin.ignore(10000, '\n');
+            break;
+        } else {
+            cout << " ------------------------------------------------\n";
+            cout << "\n ❗️Select a number from the menu. (Press any key to go back) \n\n";
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
+    }
+    menuOption = stoi(strOption);
+    
+
+    switch (menuOption) {
         case 1:
         customerMenu(customers, orders, inquiries, sId);
         break;
@@ -90,11 +118,30 @@ void mainMenu(vector <Customers> &customers, vector <Drivers> &drivers, vector <
         cout << "  1. Login       (if you have our account)\n";
         cout << "  2. Sign up     (if you don't have our account and want to create(free))\n";
         cout << "  3. Exit\n";
-        cout << " ------------------------------------------------\n";
-        cout << "  Enter option: ";
-        cin >> option;
 
-        switch (option){
+        while(true) {
+            cout << " ------------------------------------------------\n";
+            cout << "  Enter option: ";
+            getline(cin, strOption);                                                
+            if(isIntegerValid(strOption) == false){
+                cout << " ------------------------------------------------\n";
+                cout << "\n ❗️Select a number from the menu. (Press any key) \n\n";
+                cin.clear();
+                cin.ignore(10000, '\n');
+            } else if (strOption == "1" || strOption == "2" || strOption == "3"){
+                cout << "\n\n";
+                break;
+            } else {
+                cout << " ------------------------------------------------\n";
+                cout << "\n ❗️Select a number from the menu. (Press any key) \n\n";
+                cin.clear();
+                cin.ignore(10000, '\n');
+            }
+        }
+        accountOption = stoi(strOption);
+        
+
+        switch (accountOption){
             case 1:
             *sId = driverLogin(drivers, orders, inquiries);
             if (*sId != 0){
@@ -103,7 +150,7 @@ void mainMenu(vector <Customers> &customers, vector <Drivers> &drivers, vector <
             break;
 
             case 2:
-            driverSignup(drivers);
+            driverSignup(drivers, sId);
             *sId = drivers.size() -1;
 
             if (*sId != 0){
@@ -117,10 +164,11 @@ void mainMenu(vector <Customers> &customers, vector <Drivers> &drivers, vector <
         break;
 
         case 3:
-        adminLogin(customers, drivers, admins, orders, inquiries);
+        adminLogin(customers, drivers, admins, orders, inquiries, sId);
         break;
+        
         case 4:
         break;
     }
-
+    
 }
